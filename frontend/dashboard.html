@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Smart Ward Vitals</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- HEADER -->
+        <div class="dashboard-header">
+
+            <div>
+                <h1>Smart Ward Vitals</h1>
+                <p>Hospital Management Dashboard</p>
+            </div>
+
+            <div class="doctor-info">
+                <span>👨‍⚕️</span>
+
+                <div>
+                    <strong>Dr. Priya</strong>
+                    <small>Duty Doctor</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- SUMMARY CARDS -->
+        <div class="summary-cards">
+
+            <div class="summary-card">
+                <div class="card-icon">👥</div>
+
+                <div>
+                    <h2>24</h2>
+                    <p>Total Patients</p>
+                </div>
+            </div>
+
+
+            <div class="summary-card">
+                <div class="card-icon">🏥</div>
+
+                <div>
+                    <h2>8</h2>
+                    <p>Patients in Ward</p>
+                </div>
+            </div>
+
+
+            <div class="summary-card">
+                <div class="card-icon">⚠️</div>
+
+                <div>
+                    <h2>2</h2>
+                    <p>Critical Patients</p>
+                </div>
+            </div>
+
+
+            <div class="summary-card">
+                <div class="card-icon">🩺</div>
+
+                <div>
+                    <h2>5</h2>
+                    <p>Doctors on Duty</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PATIENT SEARCH -->
+        <div class="search-section">
+
+            <h2>Patient Records</h2>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search by patient name or patient ID"
+                >
+
+                <button onclick="searchPatient()">
+                    Search
+                </button>
+
+            </div>
+
+            <p id="searchMessage"></p>
+
+        </div>
+
+
+        <!-- PATIENT TABLE -->
+        <div class="patient-section">
+
+            <h2>Current Patients</h2>
+
+            <br>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Patient Name</th>
+                        <th>Ward</th>
+                        <th>Bed</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="patientTable">
+
+                    <tr>
+                        <td>P001</td>
+
+                        <td>
+                            <strong>Ram Kumar</strong>
+                        </td>
+
+                        <td>Ward 3</td>
+
+                        <td>12</td>
+
+                        <td>
+                            <span class="status stable">
+                                Stable
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="view-button"
+                                onclick="openPatient()">
+                                View
+                            </button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>P002</td>
+
+                        <td>
+                            <strong>Anitha</strong>
+                        </td>
+
+                        <td>Ward 2</td>
+
+                        <td>08</td>
+
+                        <td>
+                            <span class="status stable">
+                                Stable
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="view-button"
+                                onclick="openPatient()">
+                                View
+                            </button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>P003</td>
+
+                        <td>
+                            <strong>Rajesh</strong>
+                        </td>
+
+                        <td>Ward 1</td>
+
+                        <td>05</td>
+
+                        <td>
+                            <span class="status critical">
+                                Critical
+                            </span>
+                        </td>
+
+                        <td>
+                            <button
+                                class="view-button"
+                                onclick="openPatient()">
+                                View
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- WARD MONITOR -->
+        <div class="ward-section">
+
+            <div>
+
+                <h2>Ward Monitoring</h2>
+
+                <p>
+                    Monitor patient vitals from a centralized dashboard.
+                </p>
+
+            </div>
+
+            <button
+                class="ward-button"
+                onclick="openWard()">
+
+                Open Ward Monitor
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function openPatient() {
+
+            window.location.href = "patient.html";
+
+        }
+
+
+        function openWard() {
+
+            window.location.href = "ward.html";
+
+        }
+
+
+        function searchPatient() {
+
+            const searchInput =
+                document.querySelector(".search-box input");
+
+            const searchValue =
+                searchInput.value.trim().toLowerCase();
+
+            const message =
+                document.getElementById("searchMessage");
+
+            if (searchValue === "") {
+
+                message.innerText =
+                    "Please enter a patient name or ID.";
+
+                return;
+
+            }
+
+            if (
+                searchValue === "p001" ||
+                searchValue === "ram" ||
+                searchValue === "ram kumar"
+            ) {
+
+                window.location.href = "patient.html";
+
+            } else {
+
+                message.innerText =
+                    "Patient record not found.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
